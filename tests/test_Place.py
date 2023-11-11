@@ -34,12 +34,14 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(datetime, type(Place().updated_at))
 
     def test_city_id_is_public_class_attribute(self):
+	"""Test that the 'city_id' attribute is a class attribute of Place."""
         pl = Place()
         self.assertEqual(str, type(Place.city_id))
         self.assertIn("city_id", dir(pl))
         self.assertNotIn("city_id", pl.__dict__)
 
     def test_user_id_is_public_class_attribute(self):
+	"""Test that 'user_id' is a public class attribute of Place."""
         pl = Place()
         self.assertEqual(str, type(Place.user_id))
         self.assertIn("user_id", dir(pl))
