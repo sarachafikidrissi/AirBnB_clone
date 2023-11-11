@@ -1,58 +1,94 @@
+#!/usr/bin/python3
+"""Defines unittests for models/user.py.
+
+"""
+import os
+import models
 import unittest
+from datetime import datetime
+from time import sleep
 from models.user import User
-from models.base_model import Base_model
 
-class TestUser(unittest.TestCase):
-    """
-    Unit tests for the User class.
-    """
-    def test_user_creation_default_values(self):
-        """
-        Test User creation with default values.
-        """
-        user = User()
-        self.assertEqual(user.email, '')
-        self.assertEqual(user.password, '')
-        self.assertEqual(user.first_name, '')
-        self.assertEqual(user.last_name, '')
 
-    def test_user_creation_with_values(self):
-        """
-        Test User creation with provided values.
-        """
-        user = User(email='john@example.com', password='password123', first_name='John', last_name='Doe')
-        self.assertEqual(user.email, 'john@example.com')
-        self.assertEqual(user.password, 'password123')
-        self.assertEqual(user.first_name, 'John')
-        self.assertEqual(user.last_name, 'Doe')
+class TestUserClass(unittest.TestCase):
+    """Unittests for testing the User class."""
 
-    def test_str_method(self):
-        """
-        Test the __str__ method.
-        """
-        user = User(email='john@example.com', password='password123', first_name='John', last_name='Doe')
-        expected_str = f"[User] ({user.id}) {user.__dict__}"
-        self.assertEqual(str(user), expected_str)
+    def test_NoArgs_instantiates(self):
+	"""Test that an instance of user is created without passing any arguments."""
+        self.assertEqual(User, type(User()))
 
-    def test_to_dict_method(self):
-        """
-        Test the to_dict method.
-        """
-        user = User(email='john@example.com', password='password123', first_name='John', last_name='Doe')
-        user_dict = user.to_dict()
-        self.assertEqual(user_dict['__class__'], 'User')
-        self.assertEqual(user_dict['email'], 'john@example.com')
-        self.assertEqual(user_dict['password'], 'password123')
-        self.assertEqual(user_dict['first_name'], 'John')
-        self.assertEqual(user_dict['last_name'], 'Doe')
+    def test_new_instance_stored_in_objects(self):
+	"""Test that a new instance of user is stored in the objects dictionary."""
+        self.assertIn(User(), models.storage.all().values())
 
-    def test_user_creation_with_invalid_values(self):
-        """
-        Test User creation with invalid values.
-        """
-        with self.assertRaises(ValueError):
-            user = User(email=123, password=456, first_name=True, last_name=None)
+    def test_id_is_public_str(self):
+	"""Test that the 'id' attribute of user is a string."""
+        self.assertEqual(str, type(User().id))
 
-if __name__ == '__main__':
+    def test_created_at_is_public_datetime(self):
+        self.assertEqual(datetime, type(User().created_at))
+
+    def test_updated_at_is_public_datetime(self):
+        self.assertEqual(datetime, type(User().updated_at))
+
+    def test_email_is_public_str(self):
+        self.assertEqual(str, type(User.email))
+
+    def test_password_is_public_str(self):
+        self.assertEqual(str, type(User.password))
+
+    def test_first_name_is_public_str(self):
+        self.assertEqual(str, type(User.first_name))
+
+    def test_last_name_is_public_str(self):
+        self.assertEqual(str, type(User.last_name))
+
+    def test_two_users_unique_ids(self):
+        us1 = User()
+        us2 = User()
+        self.assertNotEqual(us1.id, us2.id)
+
+    def test_two_users_different_created_at(self):
+        us1 = User()
+        sleep(0.05)
+        us2 = User()
+        self.assertLess(us1.created_at, us2.created_at)
+
+    def test_two_users_different_updated_at(self):
+        us1 = User()
+        sleep(0.05)
+        us2 = User()
+        self.assertLess(us1.updated_at, us2.updated_at)
+
+    def test_str_representation(self):
+        dt = datetime.today()
+        dt_repr = repr(dt)
+        us = User()
+        us.id = "123456"
+        us.created_at = us.updated_at = dt
+        usstr = us.__str__()
+        self.assertIn("[User] (123456)", usstr)
+        self.assertIn("'id': '123456'", usstr)
+        self.assertIn("'created_at': " + dt_repr, usstr)
+        self.assertIn("'updated_at': " + dt_repr, usstr)
+
+    def test_args_unused(self):
+        us = User(None)
+        self.assertNotIn(None, us.__dict__.values())
+
+    def test_instantiation_with_kwargs(self):
+        dt = datetime.today()
+        dt_iso = dt.isoformat()
+        us = User(id="345", created_at=dt_iso, updated_at=dt_iso)
+        self.assertEqual(us.id, "345")
+        self.assertEqual(us.created_at, dt)
+        self.assertEqual(us.updated_at, dt)
+
+    def test_instantiation_with_None_kwargs(self):
+        with self.assertRaises(TypeError):
+            User(id=None, created_at=None, updated_at=None)
+          
+
+
+if __name__ == "__main__":
     unittest.main()
-
