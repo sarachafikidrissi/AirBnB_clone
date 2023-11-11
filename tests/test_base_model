@@ -1,4 +1,8 @@
-mport unittest
+#!/usr/bin/python3
+"""This is test_base_model
+provides testing methods
+"""
+import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 import uuid
@@ -6,6 +10,7 @@ import inspect
 import pep8
 import sys
 from contextlib import redirect_stdout
+
 
 class TestBaseModel(unittest.TestCase):
     """This is a Class for testing BaseModel class methods
