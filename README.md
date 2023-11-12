@@ -161,8 +161,8 @@ IMPORTANT: The project was created in Ubuntu 20.04
 
 ## Team
 
-<a href="https://github.com/Hichammayat">`mecomonteshbtn`</a>
-<a href="https://github.com/sarachafikidrissi">`Charliemur2`</a>
+<a href="https://github.com/Hichammayat">`Hichammayat`</a>
+<a href="https://github.com/sarachafikidrissi">`sarachafikidrissi`</a>
 
 
 ---
