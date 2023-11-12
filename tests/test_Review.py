@@ -9,15 +9,16 @@ from datetime import datetime
 from time import sleep
 from models.review import Review
 
+
 class TestReviewInstantiation(unittest.TestCase):
     """Unittests for Review class instantiation."""
 
     def test_instantiation(self):
-        """Test that an instance of Review is correctly created without any arguments."""
+        """Test instance of Review is correctly created without Args."""
         self.assertEqual(Review, type(Review()))
 
     def test_stored_in_objects(self):
-        """Test that a new instance of Review is stored in the objects dictionary."""
+        """Test new instance of Review is stored in the objects dictionary."""
         self.assertIn(Review(), models.storage.all().values())
 
     def test_id_type(self):
@@ -25,11 +26,11 @@ class TestReviewInstantiation(unittest.TestCase):
         self.assertEqual(str, type(Review().id))
 
     def test_created_at_type(self):
-        """Test that the 'created_at' attribute of Review is of type datetime."""
+        """Test 'created_at' attribute of Review is of type datetime."""
         self.assertEqual(datetime, type(Review().created_at))
 
     def test_updated_at_type(self):
-        """Test that the 'updated_at' attribute of Review is of type datetime."""
+        """Test 'updated_at' attribute of Review is of type datetime."""
         self.assertEqual(datetime, type(Review().updated_at))
 
     def test_place_id_ATTR(self):
@@ -84,10 +85,11 @@ class TestReviewInstantiation(unittest.TestCase):
         self.assertIn("[Review] (123456)", review_str)
         self.assertIn("'id': '123456'", review_str)
         self.assertIn("'created_at': " + dt_repr, review_str)
-        self.assertIn("'updated_at': " + dt_repr, review_str)	
+        self.assertIn("'updated_at': " + dt_repr, review_str)
 
     def test_args_unused(self):
-        """Test that Review instantiation with None does not include None in the object's attributes."""
+        """Test that Review instantiation
+        with None does not include None in the object's attributes."""
         review = Review(None)
         self.assertNotIn(None, review.__dict__.values())
 
@@ -101,9 +103,11 @@ class TestReviewInstantiation(unittest.TestCase):
         self.assertEqual(review.updated_at, dt)
 
     def test_instantiation_with_None_kwargs(self):
-        """Test that Review instantiation with None keyword arguments raises a TypeError."""
+        """Test that Review instantiation with None
+        keyword arguments raises a TypeError."""
         with self.assertRaises(TypeError):
             Review(id=None, created_at=None, updated_at=None)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -8,15 +8,16 @@ from datetime import datetime
 from time import sleep
 from models.state import State
 
+
 class TestStateInstantiation(unittest.TestCase):
     """Unittests for State class instantiation."""
 
     def test_instantiation(self):
-        """Test that an instance of State is correctly created without any arguments."""
+        """Test tinstance of State is correctly created without Args."""
         self.assertEqual(State, type(State()))
 
     def test_stored_in_objects(self):
-        """Test that a new instance of State is stored in the objects dictionary."""
+        """Test new instance of State is stored in the objects dictionary."""
         self.assertIn(State(), models.storage.all().values())
 
     def test_id_type(self):
@@ -24,11 +25,11 @@ class TestStateInstantiation(unittest.TestCase):
         self.assertEqual(str, type(State().id))
 
     def test_created_at_type(self):
-        """Test that the 'created_at' attribute of State is of type datetime."""
+        """Test 'created_at' attribute of State is of type datetime."""
         self.assertEqual(datetime, type(State().created_at))
 
     def test_updated_at_type(self):
-        """Test that the 'updated_at' attribute of State is of type datetime."""
+        """Test 'updated_at' attribute of State is of type datetime."""
         self.assertEqual(datetime, type(State().updated_at))
 
     def test_name_ATTR(self):
@@ -45,14 +46,14 @@ class TestStateInstantiation(unittest.TestCase):
         self.assertNotEqual(state1.id, state2.id)
 
     def test_different_created_at(self):
-        """Test that two states have different 'created_at' timestamps."""
+        """Test two states have different 'created_at' timestamps."""
         state1 = State()
         sleep(0.05)
         state2 = State()
         self.assertLess(state1.created_at, state2.created_at)
 
     def test_different_updated_at(self):
-        """Test that two states have different 'updated_at' timestamps."""
+        """Test two states have different 'updated_at' timestamps."""
         state1 = State()
         sleep(0.05)
         state2 = State()
@@ -90,6 +91,6 @@ class TestStateInstantiation(unittest.TestCase):
         with self.assertRaises(TypeError):
             State(id=None, created_at=None, updated_at=None)
 
+
 if __name__ == "__main__":
     unittest.main()
-

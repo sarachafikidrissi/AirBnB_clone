@@ -8,15 +8,16 @@ from datetime import datetime
 from time import sleep
 from models.amenity import Amenity
 
+
 class TestAmenityAttributes(unittest.TestCase):
     """Unittests for Amenity class attributes."""
 
     def test_instantiation(self):
-        """Test that an instance of Amenity is correctly created without any arguments."""
+        """Test Amenity is correctly created without any arguments."""
         self.assertEqual(Amenity, type(Amenity()))
 
     def test_stored_in_objects(self):
-        """Test that a new instance of Amenity is stored in the objects dictionary."""
+        """Test Amenity is stored in the objects dictionary."""
         self.assertIn(Amenity(), models.storage.all().values())
 
     def test_id_type(self):
@@ -24,11 +25,11 @@ class TestAmenityAttributes(unittest.TestCase):
         self.assertEqual(str, type(Amenity().id))
 
     def test_created_at_type(self):
-        """Test that the 'created_at' attribute of Amenity is of type datetime."""
+        """Test'created_at' attribute of Amenity is of type datetime."""
         self.assertEqual(datetime, type(Amenity().created_at))
 
     def test_updated_at_type(self):
-        """Test that the 'updated_at' attribute of Amenity is of type datetime."""
+        """Test'updated_at' attribute of Amenity is of type datetime."""
         self.assertEqual(datetime, type(Amenity().updated_at))
 
     def test_name_ATTR(self):
@@ -45,14 +46,14 @@ class TestAmenityAttributes(unittest.TestCase):
         self.assertNotEqual(amenity1.id, amenity2.id)
 
     def test_different_created_at(self):
-        """Test that two instances of Amenity have different 'created_at' timestamps."""
+        """Test two instances have different 'created_at' timestamps."""
         amenity1 = Amenity()
         sleep(0.05)
         amenity2 = Amenity()
         self.assertLess(amenity1.created_at, amenity2.created_at)
 
     def test_different_updated_at(self):
-        """Test that two instances of Amenity have different 'updated_at' timestamps."""
+        """Test two instances have different 'updated_at' timestamps."""
         amenity1 = Amenity()
         sleep(0.05)
         amenity2 = Amenity()
@@ -72,7 +73,7 @@ class TestAmenityAttributes(unittest.TestCase):
         self.assertIn("'updated_at': " + dt_repr, amenity_str)
 
     def test_args_unused(self):
-        """Test that creating an Amenity instance with None as argument results in no None values in __dict__."""
+        """Test with None as argument results in no None values in __dict__."""
         amenity = Amenity(None)
         self.assertNotIn(None, amenity.__dict__.values())
 
@@ -86,9 +87,10 @@ class TestAmenityAttributes(unittest.TestCase):
         self.assertEqual(amenity.updated_at, dt)
 
     def test_instantiation_with_None_kwargs(self):
-        """Test that creating an Amenity instance with None as keyword arguments raises a TypeError."""
+        """Test with None as keyword arguments raises a TypeError."""
         with self.assertRaises(TypeError):
             Amenity(id=None, created_at=None, updated_at=None)
+
 
 if __name__ == "__main__":
     unittest.main()

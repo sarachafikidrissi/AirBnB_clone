@@ -10,6 +10,7 @@ from datetime import datetime
 from time import sleep
 from models.user import User
 
+
 class TestUserInstantiation(unittest.TestCase):
     """
     Unit tests for testing the instantiation of the User class.
@@ -35,13 +36,13 @@ class TestUserInstantiation(unittest.TestCase):
 
     def test_created_at_is_public_datetime(self):
         """
-        Test that the 'created_at' attribute of a User instance is a datetime object.
+        Test 'created_at' attribute of a User instance is a datetime object.
         """
         self.assertEqual(datetime, type(User().created_at))
 
     def test_updated_at_is_public_datetime(self):
         """
-        Test that the 'updated_at' attribute of a User instance is a datetime object.
+        Test 'updated_at' attribute of a User instance is a datetime object.
         """
         self.assertEqual(datetime, type(User().updated_at))
 
@@ -109,6 +110,7 @@ class TestUserInstantiation(unittest.TestCase):
         self.assertIn("'id': '123456'", usstr)
         self.assertIn("'created_at': " + dt_repr, usstr)
         self.assertIn("'updated_at': " + dt_repr, usstr)
+
 
 if __name__ == "__main__":
     unittest.main()
