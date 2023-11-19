@@ -5,6 +5,7 @@
     border: 1px solid #dddddd;
     border-radius: 4px;
     position: relative;
+    z-index: 1;
 }
 .search-button {
     font-size: 18px;
@@ -85,3 +86,4 @@
 .locations .popover h2 {
     margin-bottom: 0;
 }
+
