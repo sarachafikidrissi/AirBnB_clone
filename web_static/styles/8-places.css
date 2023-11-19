@@ -57,8 +57,28 @@ article {
 .user {
     margin-bottom: 10px;
 }
-
-
+.information .max_guest {
+    background-image: url('../images/icon_group.png');
+}
+.information .number_rooms {
+    background-image: url('../images/icon_bed.png');
+}
+.information .number_bathrooms {
+    background-image: url('../images/icon_bath.png');
+}
+.information .max_guest, .number_rooms, .number_bathrooms {
+    width: 100px;
+    background-image: url('../images/icon_group.png'); 
+    background-position: center; 
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.information span {
+    position: relative;
+    top: 30px;
+}
 
 
 
