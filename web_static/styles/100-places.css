@@ -79,10 +79,51 @@ article {
     position: relative;
     top: 30px;
 }
-.description {
-    margin-bottom: 100px;
+.places .amenities {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 380px;
 }
-
-/* Add styling for task 9 */
-
-
+.places .reviews {
+    margin-top: 40px;
+}
+.places .amenities h2, .places .reviews h2 {
+    font-size: 16px;
+    width: 380px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 10px;  
+}
+.places .reviews ul > li{
+    transform: translateX(-20%);
+    margin: 20px;
+}
+.places .reviews h3 {
+    font-size: 14px;
+}
+.places .reviews p {
+    font-size: 12px;
+}
+.places .amenities ul, .places .reviews ul {
+    list-style-type: none;
+}
+.places .tv  {
+   background-image: url('../images/icon_tv.png'); 
+}
+.places .wifi  {
+    background-image: url('../images/icon_wifi.png'); 
+}
+ .places .pet  {
+    background-image: url('../images/icon_pets.png'); 
+}
+.places .amenities, .reviews {
+    font-size: 16px;
+}
+.places .tv, .wifi, .pet {
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+    transform: translateX(-20%);
+    margin: 20px;
+}
