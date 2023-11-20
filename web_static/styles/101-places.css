@@ -8,7 +8,6 @@
     font-size: 30px;
     left: 250px;
     width: 70%;
-
 }
 article {
     display: flex;
@@ -131,4 +130,28 @@ article {
     padding-left: 30px;
     transform: translateX(-20%);
     margin: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .places {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 80%;
+        left: 0%;
+        margin-top: 20px;
+
+
+    }
+    .places .centered {
+        left: 0;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .filters {
+        width: 80%;
+        height: 90%;
+    }
+
 }
