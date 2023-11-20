@@ -9,3 +9,9 @@ footer {
     align-items: center;
     bottom: 0;
 }
+
+@media only screen and (max-width: 1300px) {
+    footer {
+        height: 20px;
+    }
+}

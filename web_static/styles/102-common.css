@@ -14,3 +14,8 @@ body {
     margin-bottom: 30px;
    
 }
+@media only screen and (max-width: 850px) {
+    body {
+        overflow-x: hidden;
+    }
+}
